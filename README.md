@@ -21,8 +21,9 @@ DataWorks is a Big Data platform product launched by Alibaba Cloud. It provides 
 ![Alt text](/demo_screenshot/dataworks_create_workspace.jpg)
 ![Alt text](/demo_screenshot/dataworks_standard_mode.jpg)
 
-# configure external data source for ingestion
-## connect to mysql: [configuration](/config_mysql_in.sql)
+## configure external data source for ingestion
+### connect to mysql: [configuration](/config_mysql_in.sql)
+![Alt text](/demo_screenshot/datasource_mysql_in.jpg)
 ```
 Data Source Type: ApasaraDB for RDS
 Data Source Name: rds_workshop_log
@@ -33,6 +34,17 @@ Database name: workshop
 Username: workshop
 Password: workshop#2017
 ```
-
-![Alt text](/demo_screenshot/datasource_mysql_in.jpg)
+### connect to oss: [configuration](/datasource_oss_in.jpg)
 ![Alt text](/demo_screenshot/datasource_oss_in.jpg)
+```
+Data Source Name：oss_workshop_log
+Endpoint：http://oss-cn-shanghai-internal.aliyuncs.com
+bucket：dataworks-workshop
+AccessKey ID：LTAINEhd4MZ8pX64
+AccessKey Key：lXnzUngTSebt3SfLYxZxoSjGAK6IaF
+```
+## create a virtual node for starting point
+![Alt text](/demo_screenshot/virtual_node_root.jpg)
+
+## data ingestion
+
