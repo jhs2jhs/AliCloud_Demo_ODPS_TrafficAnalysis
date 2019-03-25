@@ -76,7 +76,6 @@ PARTITIONED BY (
     dt STRING
 );
 
--- DML
 INSERT OVERWRITE TABLE ods_s_user_dd PARTITION (dt=${bdp.system.bizdate})
 SELECT uid, gender, age_range, zodiac
 FROM ods_mysql_s_user
@@ -87,32 +86,7 @@ WHERE dt = ${bdp.system.bizdate};
 
 ### create table to host mysql data ingestion: [sql](sql_dd_e2e_mysql.sql)
 * table partition is always recommended. 
-```
-CREATE TABLE IF NOT EXISTS ods_visit_log_dd (
-    uid STRING COMMENT 'user ID',
-    ip STRING COMMENT 'ip address',
-    time STRING COMMENT 'time yyyymmddhh:mi:ss',
-    http_status STRING COMMENT 'server responsed status code',
-    traffic_bytes STRING COMMENT 'client responsed bite count',
-    http_method STRING COMMENT 'http request type',
-    url STRING COMMENT 'url',
-    http_protocol STRING COMMENT 'http protocal version',
-    host STRING COMMENT ' source url',
-    device STRING COMMENT 'client type ',
-    visit_type STRING COMMENT 'request type crawler feed user unknown',
-    region STRING COMMENT 'geogrpahical location according to IP address'
-) PARTITIONED BY (
-    dt STRING
-);
 
-INSERT OVERWRITE TABLE ods_visit_log_dd PARTITION (dt=${bdp.system.bizdate})
-SELECT 
-    uid, ip, time, http_status, traffic_bytes, http_method, url, 
-    http_protocol, host, device, visit_type,
-    get_region_from_ip(ip) as region
-FROM ods_tmp_visit_log_dd
-WHERE dt = ${bdp.system.bizdate};
-```
 ### configure oss ingestion task
 ![Alt text](/demo_screenshot/ingest_oss.jpg)
 
@@ -120,7 +94,7 @@ WHERE dt = ${bdp.system.bizdate};
 * download [udf jar](/udf/ip2region.jar) file and upload into __resource__ folder
 ![Alt text](/demo_screenshot/udf_get_region_ip.jpg)
 
-### ods_visit_log: [sql](sql_dd_e2e_mysql.sql)
+### ods_visit_log_tmp: [sql](sql_ods_tmp_visit_log_dd.sql)
 ```
 CREATE TABLE IF NOT EXISTS ods_tmp_visit_log_dd (
     uid STRING COMMENT 'user ID',
@@ -172,6 +146,34 @@ FROM (
     FROM ods_oss_log_dd
     WHERE dt = ${bdp.system.bizdate}
 ) a;
+```
+
+### ods_visit_log: [sql](sql_ods_visit_log_dd.sql)
+```
+CREATE TABLE IF NOT EXISTS ods_visit_log_dd (
+    uid STRING COMMENT 'user ID',
+    ip STRING COMMENT 'ip address',
+    time STRING COMMENT 'time yyyymmddhh:mi:ss',
+    http_status STRING COMMENT 'server responsed status code',
+    traffic_bytes STRING COMMENT 'client responsed bite count',
+    http_method STRING COMMENT 'http request type',
+    url STRING COMMENT 'url',
+    http_protocol STRING COMMENT 'http protocal version',
+    host STRING COMMENT ' source url',
+    device STRING COMMENT 'client type ',
+    visit_type STRING COMMENT 'request type crawler feed user unknown',
+    region STRING COMMENT 'geogrpahical location according to IP address'
+) PARTITIONED BY (
+    dt STRING
+);
+
+INSERT OVERWRITE TABLE ods_visit_log_dd PARTITION (dt=${bdp.system.bizdate})
+SELECT 
+    uid, ip, time, http_status, traffic_bytes, http_method, url, 
+    http_protocol, host, device, visit_type,
+    get_region_from_ip(ip) as region
+FROM ods_tmp_visit_log_dd
+WHERE dt = ${bdp.system.bizdate};
 ```
 
 ## worktask overview
