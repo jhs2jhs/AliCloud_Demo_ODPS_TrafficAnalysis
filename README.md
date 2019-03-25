@@ -3,7 +3,7 @@
 # Purpose
 
 This know-how demonstrates how to use Alibaba Cloud, particularly in a restricted envonrment, e.g. financial industry. 
-The demo will 1) ingest data from other data source (e.g. mysql and ftp), 2) transform in Alibaba Cloud dataworks, 3) visulise in MicroStrategy BI tool. 
+The demo will 1) ingest data from other data source (e.g. mysql and ftp), 2) transform in Alibaba Cloud dataworks, 3) visualise in MicroStrategy BI tool. 
 
 # Dataworks
 
