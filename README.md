@@ -82,7 +82,7 @@ FROM ods_mysql_s_user
 WHERE dt = ${bdp.system.bizdate};
 ```
 
-## data ingestion for oss [ods]
+## data ingestion for oss [ODS]
 
 ### create table to host mysql data ingestion: [sql](sql_dd_e2e_mysql.sql)
 * table partition is always recommended. 
@@ -176,7 +176,7 @@ FROM ods_tmp_visit_log_dd
 WHERE dt = ${bdp.system.bizdate};
 ```
 
-## dimentionaldata : dim
+## dimentional data [DIM]
 
 ### dim_user: [sql](/sql_dim_user.sql)
 ```
@@ -254,7 +254,7 @@ FROM (
 ) a;
 ```
 
-## dwd_visit_dd: [sql](/sql_dwd_visit_dd.sql)
+## dwd_visit_dd [DWD]: [sql](/sql_dwd_visit_dd.sql)
 ```
 CREATE TABLE IF NOT EXISTS dwd_event_visit_dd (
     uid STRING COMMENT 'user ID',
