@@ -48,6 +48,41 @@ AccessKey Key：lXnzUngTSebt3SfLYxZxoSjGAK6IaF
 ![Alt text](/demo_screenshot/virtual_node_root.jpg)
 
 ## data ingestion
+### create table to host mysql data ingestion: [sql](sql_dd_e2e_mysql.sql)
+* table partition is always recommended. 
+```
+CREATE TABLE IF NOT EXISTS ods_mysql_s_user (
+    uid STRING COMMENT 'user ID',
+    gender STRING COMMENT 'gender',
+    age_range STRING COMMENT 'age range, e.g. 30-40 year old',
+    zodiac STRING COMMENT 'zodiac'
+)
+PARTITIONED BY (
+    dt STRING
+);
+```
+### configure mysql ingestion task
+![Alt text](/demo_screenshot/ingest_mysql.jpg)
+
+### configure mysql ingestion task: [sql](/demo_screenshot/sql_ods_s_user_dd.sql)
+```
+CREATE TABLE IF NOT EXISTS ods_s_user_dd (
+    uid STRING COMMENT 'user ID',
+    gender STRING COMMENT 'gender',
+    age_range STRING COMMENT 'age range, e.g. 30-40 year old',
+    zodiac STRING COMMENT 'zodiac'
+)
+PARTITIONED BY (
+    dt STRING
+);
+
+-- DML
+INSERT OVERWRITE TABLE ods_s_user_dd PARTITION (dt=${bdp.system.bizdate})
+SELECT uid, gender, age_range, zodiac
+FROM ods_mysql_s_user
+WHERE dt = ${bdp.system.bizdate};
+```
+
 
 ## worktask overview
 ![Alt text](/demo_screenshot/workflow_overview.jpg)
