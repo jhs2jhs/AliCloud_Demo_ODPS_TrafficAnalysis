@@ -380,6 +380,14 @@ GROUP BY region;
 ## workflow overview
 ![Alt text](/demo_screenshot/workflow_overview.jpg)
 
-## sync data result into mysql for MicroStrategy BI
+## sync data result into RDS for MicroStrategy BI
 ![Alt text](/demo_screenshot/sync_to_mysql.jpg)
+![Alt text](/demo_screenshot/rds_setup.png)
+
+## download MicroStrategy BI for 30 days trial
+![Alt text](https://www.microstrategy.com/us/get-started/desktop)
+
+## connect MicroStrategy to RDS
+![Alt text](/demo_screenshot/microstrategy_connection.png)
+![Alt text](/demo_screenshot/microstrategy_bi.png)
 
