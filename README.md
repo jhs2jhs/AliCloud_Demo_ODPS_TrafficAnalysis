@@ -1,4 +1,4 @@
-# AliCloud Dataworks Demo on Web Traffic Analysis
+# AliCloud Dataworks Demo on Building Common DataWare (CDM) for Web Traffic Analysis
 
 # Dataworks
 
@@ -377,5 +377,9 @@ FROM (
 GROUP BY region;
 ```
 
-## worktask overview
+## workflow overview
 ![Alt text](/demo_screenshot/workflow_overview.jpg)
+
+## sync data result into mysql for MicroStrategy BI
+![Alt text](/demo_screenshot/sync_to_mysql.jpg)
+
