@@ -10,6 +10,10 @@ DataWorks is a Big Data platform product launched by Alibaba Cloud. It provides 
 4. Task Monitoring and Alarms: Supports task monitoring and sends alarms when errors occur to avoid service interruptions.
 
 
+# Data Model
+![Alt text](/demo_screenshot/data_model.png)
+
+
 # Workshop
 ## create Dataworks workspace
 * It is recommended to create a workspace in __China East 2__ region (Shanghai). 
