@@ -176,5 +176,83 @@ FROM ods_tmp_visit_log_dd
 WHERE dt = ${bdp.system.bizdate};
 ```
 
+## dimentionaldata : dim
+
+### dim_user: [sql](/sql_dim_user.sql)
+```
+CREATE TABLE IF NOT EXISTS dim_user_dd (
+    uid STRING COMMENT 'user ID',
+    gender STRING COMMENT 'gender',
+    age_range STRING COMMENT 'age range, e.g. 30-40 year old',
+    zodiac STRING COMMENT 'zodiac'
+)
+PARTITIONED BY (
+    dt STRING
+);
+
+INSERT OVERWRITE TABLE dim_user_dd PARTITION (dt=${bdp.system.bizdate})
+SELECT uid, gender, age_range, zodiac
+FROM ods_s_user_dd
+WHERE dt = ${bdp.system.bizdate};
+```
+
+### dim_region_dd: [sql](/sql_dim_region_dd.sql)
+```
+CREATE TABLE IF NOT EXISTS dim_region_dd (
+    region STRING COMMENT 'geogrpahical location',
+    description STRING COMMENT 'geogrpahical location description'
+)
+PARTITIONED BY (
+    dt STRING
+);
+
+INSERT OVERWRITE TABLE dim_region_dd PARTITION (dt=${bdp.system.bizdate})
+SELECT 
+    DISTINCT(region), 
+    'desc' AS description  
+FROM ods_visit_log_dd
+WHERE dt = ${bdp.system.bizdate};
+```
+
+### dim_host_dd: [sql](/sql_dim_host_dd.sql)
+```
+CREATE TABLE IF NOT EXISTS dim_host_dd (
+    host STRING COMMENT 'host',
+    description STRING COMMENT 'device description'
+)
+PARTITIONED BY (
+    dt STRING
+);
+
+INSERT OVERWRITE TABLE dim_host_dd PARTITION (dt=${bdp.system.bizdate})
+SELECT host, host AS description 
+FROM (
+    SELECT 
+        DISTINCT(host) as host
+    FROM ods_visit_log_dd
+    WHERE dt = ${bdp.system.bizdate}
+) a;
+```
+
+### dim_device_dd: [sql](/sql_dim_device_dd.sql)
+```
+CREATE TABLE IF NOT EXISTS dim_device_dd (
+    device STRING COMMENT 'device',
+    description STRING COMMENT 'device description'
+)
+PARTITIONED BY (
+    dt STRING
+);
+
+INSERT OVERWRITE TABLE dim_device_dd PARTITION (dt=${bdp.system.bizdate})
+SELECT device, device AS description 
+FROM (
+    SELECT 
+        DISTINCT(device) as device
+    FROM ods_visit_log_dd
+    WHERE dt = ${bdp.system.bizdate}
+) a;
+```
+
 ## worktask overview
 ![Alt text](/demo_screenshot/workflow_overview.jpg)
