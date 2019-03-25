@@ -1,11 +1,12 @@
 # AliCloud Dataworks Demo on Building Common DataWare (CDM) for Web Traffic Analysis
 
-# Purpose
+# Demo Purpose
 
 This know-how demonstrates how to use Alibaba Cloud, particularly in a restricted envonrment, e.g. financial industry. 
+Financial Industry is commonly use sql for data storage and MicroStrategy for BI. 
 The demo will 1) ingest data from other data source (e.g. mysql and ftp), 2) transform in Alibaba Cloud dataworks, 3) visualise in MicroStrategy BI tool. 
 
-# Dataworks
+# Dataworks Product
 
 DataWorks is a Big Data platform product launched by Alibaba Cloud. It provides one-stop Big Data development, data permission management, offline job scheduling, and other features. You can read more on [product page](https://www.alibabacloud.com/product/ide). It includes key features, such as: 
 
@@ -15,11 +16,11 @@ DataWorks is a Big Data platform product launched by Alibaba Cloud. It provides 
 4. Task Monitoring and Alarms: Supports task monitoring and sends alarms when errors occur to avoid service interruptions.
 
 
-# Data Model
+# Data Model Design
 ![Alt text](/demo_screenshot/data_model.png)
 
 
-# Workshop
+# Workshop Step-by-Step
 ## create Dataworks workspace
 * It is recommended to create a workspace in __China East 2__ region (Shanghai). 
 * It is recommended to create a workspace in __Standard__ mode. Standard will create a seperate Dev and Prod envionrment and would allow project control. 
