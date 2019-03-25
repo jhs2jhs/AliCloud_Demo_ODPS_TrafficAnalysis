@@ -44,6 +44,7 @@ AccessKey ID：LTAINEhd4MZ8pX64
 AccessKey Key：lXnzUngTSebt3SfLYxZxoSjGAK6IaF
 ```
 ## create a virtual node for starting point
+* make sure the very first virtual node has setup __root node__ dependency. 
 ![Alt text](/demo_screenshot/virtual_node_root.jpg)
 
 ## data ingestion
