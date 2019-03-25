@@ -390,7 +390,7 @@ GROUP BY region;
 ![Alt text](/demo_screenshot/rds_setup.png)
 
 ## download MicroStrategy BI for 30 days trial
-![Alt text](https://www.microstrategy.com/us/get-started/desktop)
+[download](https://www.microstrategy.com/us/get-started/desktop)
 
 ## connect MicroStrategy to RDS
 ![Alt text](/demo_screenshot/microstrategy_connection.png)
