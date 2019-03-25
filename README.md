@@ -1,6 +1,14 @@
 # AliCloud_Demo_ODPS_DataWarehouse
 
-![Alt text](/demo_screenshot/20190325071911.jpg)
+# Dataworks
+
+DataWorks is a Big Data platform product launched by Alibaba Cloud. It provides one-stop Big Data development, data permission management, offline job scheduling, and other features. You can read more on ![product page](https://www.alibabacloud.com/product/ide). 
+
+## Key features
+1. Development Visualization: You can drag and drop nodes to create a workflow. You can also edit and debug your code online, and ask other developers to join you.
+2. Multiple Task Types: Supports data integration, MaxCompute SQL, MaxCompute MR, machine learning, and shell tasks.
+3. Strong Scheduling Capability: Runs millions of tasks concurrently and supports hourly, daily, weekly, and monthly schedules.
+4. Task Monitoring and Alarms: Supports task monitoring and sends alarms when errors occur to avoid service interruptions.
 
 
 # Workshop
