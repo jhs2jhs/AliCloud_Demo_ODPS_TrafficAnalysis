@@ -12,7 +12,13 @@ DataWorks is a Big Data platform product launched by Alibaba Cloud. It provides 
 
 # Workshop
 ## create Dataworks workspace
-* It is recommended to create a workspace in _China East 2_ region (Shanghai). 
-* It is recommended to create a workspace in _Standard_ mode. Standard will create a seperate Dev and Prod envionrment and would allow project control. 
+* It is recommended to create a workspace in __China East 2__ region (Shanghai). 
+* It is recommended to create a workspace in __Standard__ mode. Standard will create a seperate Dev and Prod envionrment and would allow project control. 
 ![Alt text](/demo_screenshot/dataworks_create_workspace.jpg)
 ![Alt text](/demo_screenshot/dataworks_standard_mode.jpg)
+
+# configure external data source for ingestion
+## mysql data source configuration: [config](/config_mysql_in.sql)
+
+![Alt text](/demo_screenshot/datasource_mysql_in.jpg)
+![Alt text](/demo_screenshot/datasource_oss_in.jpg)
