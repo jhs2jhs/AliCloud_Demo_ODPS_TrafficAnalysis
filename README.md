@@ -294,5 +294,68 @@ LEFT OUTER JOIN (
 ON a.uid = b.uid;
 ```
 
+### dws_device_region_pv_dd: [sql](/sql_dws_device_region_pv_dd.sql)
+```
+CREATE TABLE IF NOT EXISTS dws_device_region_pv_dd (
+    device STRING COMMENT 'client type',
+    region STRING COMMENT 'region from parsing ip',
+    pv BIGINT COMMENT 'pv COUNT'
+)
+PARTITIONED BY (
+    dt STRING
+);
+
+INSERT OVERWRITE TABLE dws_device_region_pv_dd PARTITION (dt='${bdp.system.bizdate}')
+SELECT 
+    device, region, COUNT(0) AS pv
+FROM dwd_event_visit_dd
+WHERE dt = ${bdp.system.bizdate}
+GROUP BY device, region;
+```
+
+### dws_host_pv_dd: [sql](/sql_dws_host_pv_dd.sql)
+```
+CREATE TABLE IF NOT EXISTS dws_host_pv_dd (
+    host STRING COMMENT 'host ',
+    pv BIGINT COMMENT 'pv COUNT'
+)
+PARTITIONED BY (
+    dt STRING
+);
+
+INSERT OVERWRITE TABLE dws_host_pv_dd PARTITION (dt='${bdp.system.bizdate}')
+SELECT 
+    host, COUNT(0) AS pv
+FROM dwd_event_visit_dd
+WHERE dt = ${bdp.system.bizdate}
+GROUP BY host;
+```
+
+### dws_user_region_device_pv_dd: [sql](/sql_dws_user_region_device_pv_dd.sql)
+```
+CREATE TABLE IF NOT EXISTS dws_event_visit_pv_dd (
+    uid STRING COMMENT 'user ID',
+    gender STRING COMMENT 'gender',
+    age_range STRING COMMENT 'age range',
+    zodiac STRING COMMENT 'zodiac',
+    ----
+    region STRING COMMENT 'region from parsing ip',
+    device STRING COMMENT 'client type',
+    ----
+    pv BIGINT COMMENT 'pv'
+) PARTITIONED BY (
+    dt STRING
+);
+
+INSERT OVERWRITE TABLE dws_event_visit_pv_dd PARTITION (dt='${bdp.system.bizdate}')
+SELECT 
+    uid, MAX(gender), MAX(age_range), MAX(zodiac), 
+    MAX(region), MAX(device), COUNT(0) AS pv
+FROM dwd_event_visit_dd
+WHERE dt = ${bdp.system.bizdate}
+GROUP BY uid;
+```
+
+
 ## worktask overview
 ![Alt text](/demo_screenshot/workflow_overview.jpg)
