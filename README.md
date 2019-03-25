@@ -1,5 +1,10 @@
 # AliCloud Dataworks Demo on Building Common DataWare (CDM) for Web Traffic Analysis
 
+# Purpose
+
+This know-how demonstrates how to use Alibaba Cloud, particularly in a restricted envonrment, e.g. financial industry. 
+The demo will 1) ingest data from other data source (e.g. mysql and ftp), 2) transform in Alibaba Cloud dataworks, 3) visulise in MicroStrategy BI tool. 
+
 # Dataworks
 
 DataWorks is a Big Data platform product launched by Alibaba Cloud. It provides one-stop Big Data development, data permission management, offline job scheduling, and other features. You can read more on [product page](https://www.alibabacloud.com/product/ide). It includes key features, such as: 
@@ -390,4 +395,5 @@ GROUP BY region;
 ## connect MicroStrategy to RDS
 ![Alt text](/demo_screenshot/microstrategy_connection.png)
 ![Alt text](/demo_screenshot/microstrategy_bi.png)
+
 
