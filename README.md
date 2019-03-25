@@ -395,5 +395,7 @@ GROUP BY region;
 ## connect MicroStrategy to RDS
 ![Alt text](/demo_screenshot/microstrategy_connection.png)
 ![Alt text](/demo_screenshot/microstrategy_bi.png)
+![Alt text](/demo_screenshot/microstrategy_bi2.jpg)
+
 
 
