@@ -117,6 +117,8 @@ WHERE dt = ${bdp.system.bizdate};
 ![Alt text](/demo_screenshot/ingest_oss.jpg)
 
 ### UDF
+* download [udf jar](/udf/ip2region.jar) file and upload into __resource__ folder
+![Alt text](/demo_screenshot/udf_get_region_ip.jpg)
 
 ### ods_visit_log: [sql](sql_dd_e2e_mysql.sql)
 ```
